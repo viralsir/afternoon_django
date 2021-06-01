@@ -18,6 +18,7 @@ from django.urls import path,include
 from hello.views import home,about
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("hello/",include("hello.urls"))
+    path("hello/",include("hello.urls")),
+    path("newyear/",include("newyear.urls"))
 
 ]
