@@ -7,12 +7,30 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
 <body>
-<h1> flight list</h1>
+<h1> flight  - {{ flight.id }}</h1>
 <ul>
-    {% for flight in flights %}
-    <li><a href="{% url 'flight-detail' flight.id %}"> {{ flight }} </a></li>
-    {% endfor %}
+    <li>origin city : {{ flight.origin.city }}</li>
+    <li>destination city :{{ flight.destinations.city }}</li>
+    <li> duration : {{ flight.durations }}</li>
+
 </ul>
+<h1> Passenger List </h1>
+<ul>
+    {% for  passenger in passengers %}
+       <li> {{ passenger }}</li>
+   {% endfor %}
+</ul>
+ <form action="{% url 'flight-book' flight.id %}" method="post">
+     {% csrf_token %}
+     <select name="npassenger" id="">
+         {% for passenger in non_passenger %}
+             <option value="{{ passenger.id }}">{{ passenger }}</option>
+         {% endfor %}
+     </select>
+     <input type="submit" value="book">
+ </form>
+
+ <a href="{% url 'flight_home' %}" class="btn btn-outline-info"> home  </a>
 {% comment %}<table class="table table-dark">
     <thead>
         <tr>
