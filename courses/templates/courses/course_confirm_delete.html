@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>delete page </title>
+</head>
+<body>
+    <form method="post">
+        {%  csrf_token %}
+         <h1 style="color:red"> Are you sure you want to delete ?</h1>
+         <ul>
+             <li> Name : {{ object.name }}</li>
+             <li> Description : {{ object.description }}</li>
+             <li> Fees :{{ object.fees }}</li>
+         </ul>
+        <input type="submit" value="yes i am sure ">
+        <a href="{% url 'course-view' %}"> cancel</a>
+    </form>
+</body>
+</html>

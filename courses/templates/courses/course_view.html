@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>course view </title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+
+</head>
+<body>
+    <table id="example" class="display" style="width:100%">
+        <thead>
+            <tr>
+            <th> Name </th>
+            <th>Description </th>
+            <th>Fees</th>
+                <th>Action </th>
+        </tr>
+
+        </thead>
+        <tbody>
+            {% for c in courses %}
+            <tr>
+                <td> {{ c.name }}</td>
+                <td>{{ c.description }}</td>
+                <td>{{ c.fees }}</td>
+                <td>
+                    <a href="{% url 'course-update' c.id %}">update</a>
+                    <a href="{% url 'course-delete' c.id %}">delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+
+    </table>
+ <a href="{% url 'course-new' %}"> new Course </a>
+<script >
+    $(document).ready(function() {
+    $('#example').DataTable();
+} );
+</script>
+
+</body>
+</html>
